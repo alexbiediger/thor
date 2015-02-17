@@ -1,0 +1,47 @@
+<h1>Listing projects</h1>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Logo</th>
+      <th>Name</th>
+      <th>Description</th>
+      <th>Action</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @projects.each do |project| %>
+      <tr>
+        <td><%= image_tag project.logo.url %></td>
+        <td><%= project.name %></td>
+        <td><%= project.description %></td>
+        <td>
+          <%=
+          link_to project, :class => 'btn btn-default btn-sm' do
+            '<span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span> Show'.html_safe
+          end
+          %>
+          <%=
+          link_to edit_project_path(project), :class => 'btn btn-default btn-sm' do
+            '<span class="glyphicon glyphicon-edit" aria-hidden="true"></span> Edit'.html_safe
+          end
+          %>
+          <%=
+          link_to project, :class => 'btn btn-danger btn-sm', method: :delete, data: { confirm: 'Are you sure?' } do
+            '<span class="glyphicon glyphicon-trash" aria-hidden="true"></span> Delete'.html_safe
+          end
+          %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br/>
+
+<%= 
+  link_to new_project_path, :class => 'btn btn-primary' do
+    '<span class="glyphicon glyphicon-plus" aria-hidden="true"></span> New project'.html_safe
+  end
+%>

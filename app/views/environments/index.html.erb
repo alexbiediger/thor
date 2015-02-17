@@ -1,0 +1,48 @@
+<h1>Listing environments</h1>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Description</th>
+      <th>Color</th>
+      <th>URL</th>
+      <th>Action</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @environments.each do |environment| %>
+      <tr>
+        <td><%= environment.name %></td>
+        <td><%= environment.description %></td>
+        <td><%= environment.color %></td>
+        <td><%= environment.url %></td>
+        <td>
+          <%=
+          link_to environment, :class => 'btn btn-default btn-sm' do
+            '<span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span> Show'.html_safe
+          end
+          %>
+          <%=
+          link_to edit_environment_path(environment), :class => 'btn btn-default btn-sm' do
+            '<span class="glyphicon glyphicon-edit" aria-hidden="true"></span> Edit'.html_safe
+          end
+          %>
+          <%=
+          link_to environment, :class => 'btn btn-danger btn-sm', method: :delete, data: { confirm: 'Are you sure?' } do
+            '<span class="glyphicon glyphicon-trash" aria-hidden="true"></span> Delete'.html_safe
+          end
+          %>
+        </td>
+    <% end %>
+  </tbody>
+</table>
+
+<br/>
+
+<%= 
+  link_to new_environment_path, :class => 'btn btn-primary' do
+    '<span class="glyphicon glyphicon-plus" aria-hidden="true"></span> New environment'.html_safe
+  end
+%>

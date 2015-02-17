@@ -1,0 +1,29 @@
+<% if notice %>
+	<div class="alert alert-info" role="alert" id="notice">
+		<%= notice %>
+	</div>
+<% end %>
+
+<div class="row">
+	<div class="col-xs-2">Name:</div>
+	<div class="col-xs-10"><%= @project.name %></div>
+</div>
+
+<div class="row">
+	<div class="col-xs-2">Description:</div>
+	<div class="col-xs-10"><%= @project.description %></div>
+</div>
+
+<div class="row">
+	<div class="col-xs-2">Logo:</div>
+	<div class="col-xs-10"><%= @project.logo %></div>
+</div>
+
+<div class="col-xs-offset-2 col-xs-10">
+	<%= link_to edit_project_path(@project), :class => 'btn btn-default btn-sm' do %>
+		<span class="glyphicon glyphicon-edit" aria-hidden="true"></span> Edit
+	<% end %>
+	<%= link_to projects_path, :class => 'btn btn-default btn-sm' do %>
+		<span class="glyphicon glyphicon-th-list" aria-hidden="true"></span> Back
+	<% end %>
+</div>

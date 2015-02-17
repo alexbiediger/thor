@@ -1,0 +1,53 @@
+<%= form_for @environment, :html => {  :class => 'form-horizontal' } do |f| %>
+
+  <% if @environment.errors.any? %>
+    <div class="panel panel-danger">
+      <div class="panel-heading">
+        <%= pluralize(@environment.errors.count, "error") %> prohibited this environment from being saved:
+      </div>
+      <div class="panel-body">
+        <ul class="list-unstyled">
+          <% @environment.errors.full_messages.each do |message| %>
+            <li><span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span> <%= message %></li>
+          <% end %>
+        </ul>
+      </div>
+    </div>
+  <% end %>
+
+  <fieldset>
+    <legend><%= controller.action_name.capitalize %> Environment</legend>
+    
+    <div class="form-group <%= 'has-error' if !@environment.errors[:name].empty? %>">
+      <%= f.label :name,  :class => 'control-label col-xs-2' %>
+      <div class="col-xs-10"><%= f.text_field :name, :class => 'form-control' %></div>
+    </div>
+
+    <div class="form-group <%= 'has-error' if !@environment.errors[:description].empty? %>">
+      <%= f.label :description,  :class => 'control-label col-xs-2' %>
+      <div class="col-xs-10"><%= f.text_field :description, :class => 'form-control' %></div>
+    </div>
+
+    <div class="form-group <%= 'has-error' if !@environment.errors[:color].empty? %>">
+      <%= f.label :color,  :class => 'control-label col-xs-2' %>
+      <div class="col-xs-10"><%= f.text_field :color, :class => 'form-control color-picker' %></div>
+    </div>
+
+    <div class="form-group <%= 'has-error' if !@environment.errors[:url].empty? %>">
+      <%= f.label :url,  :class => 'control-label col-xs-2' %>
+      <div class="col-xs-10"><%= f.url_field :url, :class => 'form-control' %></div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-xs-offset-2 col-xs-10">
+          <%= f.submit :class => 'btn btn-primary' %>
+          <input type="reset" name="reset" value="Reset" class="btn btn-danger"/>
+          <%=
+          link_to environments_path, :class => 'btn btn-default' do
+            '<span class="glyphicon glyphicon-th-list" aria-hidden="true"></span> Back'.html_safe
+          end
+          %>
+        </div>
+    </div>
+  </fieldset>
+<% end %>
