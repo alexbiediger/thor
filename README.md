@@ -1,5 +1,6 @@
 # Thor
-Thor (Tests Hub On Rails) is Testlink done right. It aims to write, plan and follow the executing human-powered tests.
+Thor (Tests Hub On Rails) is Testlink done right.<br>
+It aims to write, plan and follow the execution of human-powered tests.
 
 ## Steps to install
 ### Get ruby 2.2
